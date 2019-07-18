@@ -1,6 +1,6 @@
 # based on af-magic.zsh-theme by https://github.com/andyfleming/
 
-if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="2"; fi
+if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="10"; fi
 
 function get_pwd() {
   echo "${PWD/$HOME/~}"
