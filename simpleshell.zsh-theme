@@ -7,7 +7,7 @@ function get_pwd() {
 }
 
 # primary prompt
-PROMPT='%F{$NCOLOR}%n%f@%m %F{15}$(get_pwd)%f %(?.$(git_prompt_info).): '
+PROMPT='%F{$NCOLOR}%n%f@%M %F{15}$(get_pwd)%f %(?.$(git_prompt_info).): '
 RPROMPT='%F{160}%B%(?..%?)%b%f%{$reset_color%}'
 
 # git settings
