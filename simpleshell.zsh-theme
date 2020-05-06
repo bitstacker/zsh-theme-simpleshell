@@ -6,8 +6,14 @@ function get_pwd() {
   echo "${PWD/$HOME/~}"
 }
 
-# primary prompt
-PROMPT='%F{$NCOLOR}%n%f@%m2 %F{15}$(get_pwd)%f %(?.$(git_prompt_info).): '
+DOMAIN="$(hostname -f | awk '{split($0,a,"."); print a[2] }')"
+
+if [ "$DOMAIN" = "dc" ] || [ "$DOMAIN" = "home" ]; then
+  PROMPT='%F{$NCOLOR}%n%f@%M.$DOMAIN %F{15}$(get_pwd)%f %(?.$(git_prompt_info).): '
+else
+  PROMPT='%F{$NCOLOR}%n%f@$(hostname -f) %F{15}$(get_pwd)%f %(?.$(git_prompt_info).): '
+fi
+
 RPROMPT='%F{160}%B%(?..%?)%b%f%{$reset_color%}'
 
 # git settings
