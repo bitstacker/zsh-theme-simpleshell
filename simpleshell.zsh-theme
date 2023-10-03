@@ -21,3 +21,6 @@ ZSH_THEME_GIT_PROMPT_PREFIX="$FG[21]($FG[15]"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_DIRTY="*%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="$FG[21])%{$reset_color%}"
+
+# fix autocomplete showing directories as red
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
