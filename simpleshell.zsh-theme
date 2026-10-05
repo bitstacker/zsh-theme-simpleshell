@@ -22,5 +22,11 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_DIRTY="*%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="$FG[21])%{$reset_color%}"
 
-# fix autocomplete showing directories as red
+# dircolors laden, falls noch nicht geschehen
+[[ -z "$LS_COLORS" ]] && command -v dircolors >/dev/null 2>&1 && eval "$(dircolors -b)"
+
+# custom farben setzen
+export LS_COLORS="${LS_COLORS}:ow=01;34:tw=01;34:"
+
+# autocomplete colors auf LS_COLORS setzen
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
