@@ -22,18 +22,4 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_DIRTY="*%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="$FG[21])%{$reset_color%}"
 
-# 1. Standard dircolors laden, falls LS_COLORS noch leer ist
-if [[ -z "$LS_COLORS" ]] && command -v dircolors >/dev/null 2>&1; then
-    eval "$(dircolors -b)"
-fi
-
-# 2. Alle bestehenden ow= und tw= Einträge inklusive Farbcodes herauslöschen
-LS_COLORS="${LS_COLORS//ow=<->*(;[0-9]#)*/}"
-LS_COLORS="${LS_COLORS//tw=<->*(;[0-9]#)*/}"
-
-# 3. Doppelpunkte aufräumen und eigene Werte anhängen
-LS_COLORS="${LS_COLORS//::/:}"
-export LS_COLORS="${LS_COLORS#:}:ow=01;34:tw=01;34:"
-
-# 4. Zsh Completion anweisen, die neuen Farben zu nutzen
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors "ow=01;34" "tw=01;34" ${(s.:.)LS_COLORS}
